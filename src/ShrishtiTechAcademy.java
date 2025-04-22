@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.List;
 
 public class ShrishtiTechAcademy {
@@ -17,6 +18,14 @@ public class ShrishtiTechAcademy {
                 .sorted()
                 .limit(3)
                 .forEach(System.out::println);
+
+        System.out.println();
+        String[] names = {"Reena", "John", "Zaid", "Kumar", "Angel"};
+        Arrays.stream(names).filter(str -> str.contains("a")).forEach(System.out::println);
+
+        System.out.println();
+        //Work on part of array
+        Arrays.stream(names, 2, 5).forEach(System.out::println);
 
     }
 }
