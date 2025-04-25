@@ -1,7 +1,9 @@
+package src;
+
 import java.util.Arrays;
 import java.util.List;
 
-public class ShrishtiTechAcademy {
+class ShrishtiTechAcademy {
 
     public static void main(String[] args) {
 
