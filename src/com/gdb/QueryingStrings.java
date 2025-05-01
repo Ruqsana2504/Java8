@@ -40,6 +40,7 @@ public class QueryingStrings {
 
         //17.first repeated character, first non-repeated character, character count
 
+        //18.Frequency of characters
 
     }
 }

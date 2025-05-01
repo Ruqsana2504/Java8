@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ListsOfIntegers {
+public class QueryingListsOfIntegers {
 
     public static void main(String[] args) {
         List<Integer> list2 = Arrays.asList(35, 45, 23, 39, 2, 3, 1, 5, 4, 7, 6, 9, 8, 11, 10, 13, 12, 15, 14, 11, 9, 23, 76, 93, 11, 5, 12, 99, 52);

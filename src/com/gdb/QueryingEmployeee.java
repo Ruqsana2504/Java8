@@ -3,7 +3,7 @@ package src.com.gdb;
 import java.util.Arrays;
 import java.util.List;
 
-public class QueryingListOfObjects {
+public class QueryingEmployeee {
 
     public static void main(String[] args) {
 
@@ -86,6 +86,9 @@ public class QueryingListOfObjects {
 
         //26. contains Gay, if present print first gay
         System.out.println("------26. contains Gay, if present print first gay--------");
+
+        //27. Second-highest salary
+        System.out.println("------27. Second highest salary--------");
 
 
     }
