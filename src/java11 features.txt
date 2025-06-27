@@ -1,0 +1,45 @@
+Java 11 Features:
+
+1. New String Methods
+Methods:
+isBlank(): Checks if a string is empty or contains only whitespace.
+lines(): Splits string into a stream of lines.
+strip(): Removes leading/trailing whitespace (Unicode-aware).
+repeat(n): Repeats the string n times.
+
+Example:
+" Java ".strip(); // "Java"
+"hello\nworld".lines().forEach(System.out::println);
+
+
+2. Local-Variable Syntax for Lambda Parameters
+Purpose: Use var in lambda parameters for annotations or readability.
+Example:
+BiFunction<Integer, Integer, Integer> add = (var x, var y) -> x + y;
+
+
+3. HTTP Client API (Standardized)
+Purpose: Modern HTTP client supporting HTTP/2 and WebSocket.
+Example:
+HttpClient client = HttpClient.newHttpClient();
+HttpRequest request = HttpRequest.newBuilder()
+    .uri(URI.create("https://example.com"))
+    .build();
+HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+System.out.println(response.body());
+
+4. Flight Recorder and Mission Control
+Purpose: Performance monitoring and diagnostics tools.
+Impact: Helps in profiling and analyzing production systems with minimal overhead.
+
+5. Removal of Deprecated Features
+Removed:
+Java EE modules (javax.xml.bind, javax.activation, etc.)
+CORBA support
+Impact: Encourages use of external libraries and modular design.
+
+6. Launch Single-File Source-Code Programs
+Purpose: Run Java programs without compiling. -Example**:
+java HelloWorld.java
+
+Impact: Simplifies scripting and quick testing.

@@ -1,0 +1,70 @@
+Java 9 Features
+
+Java 9 – Detailed Features
+1. Java Platform Module System (JPMS) – Project Jigsaw
+Purpose: Break the JDK into modules to improve scalability, security, and maintainability.
+How it works: You define modules using a module-info.java file.
+
+Example:
+module com.example.myapp {
+    requires java.base;
+    exports com.example.myapp.api;
+}
+
+Impact: Encourages better encapsulation and reduces runtime dependencies.
+
+2. JShell (REPL)
+Purpose: Interactive command-line tool to test Java code snippets.
+Usage:
+jshell
+jshell> int x = 10;
+jshell> System.out.println(x * 2);
+Impact: Great for learning, debugging, and prototyping.
+
+
+3. Improved Javadoc
+Enhancements:
+Search box for easier navigation.
+HTML5-compliant output.
+Displays module, package, and class-level documentation.
+Impact: Better developer experience and documentation usability.
+
+4. Stream API Enhancements
+New methods:
+takeWhile(): Takes elements while a condition is true.
+dropWhile(): Skips elements while a condition is true.
+iterate(): Enhanced version with a predicate.
+
+Example:
+List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+numbers.stream().takeWhile(n -> n < 4).forEach(System.out::println);
+
+
+5. Private Methods in Interfaces
+Purpose: Share common code between default methods.
+Example:
+interface MyInterface {
+    private void log(String msg) {
+        System.out.println("Log: " + msg);
+    }
+
+    default void doSomething() {
+        log("Doing something");
+    }
+}
+
+
+6. Collection Factory Methods
+Purpose: Create immutable collections easily.
+Example:
+
+List<String> list = List.of("a", "b", "c");
+Set<Integer> set = Set.of(1, 2, 3);
+Map<String, Integer> map = Map.of("a", 1, "b", 2);
+
+
+7. Multi-Release JAR Files
+Purpose: Support different Java versions in one JAR.
+Structure:
+META-INF/versions/9/com/example/MyClass.class
+Impact: Allows backward compatibility and version-specific optimizations.
