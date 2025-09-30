@@ -4,15 +4,15 @@ Java 8 Programs:
 2. Find Duplicate Elements in a List
 3. Sort a List of Employees by Salary and Name
 4. Count Occurrences of Each Word in a Sentence
-5. Find the Second Highest Number in an Array
+5. Find the Second-Highest Number in an Array
 6. Check if Two Strings are Anagrams
 7. Reverse Each Word in a Sentence
 8. Find the Longest String in a List
 9. Use Optional to Avoid NullPointerException
 10. Flatten a List of Lists
-11. Occurence of each no in list of integers
-12. Sort the array of numbers in descending order and find 2nd highest number
-13. Sort and print first three smallest numbers
+11. Occurrence of each no in list of integers
+12. Sort the array of numbers in descending order and find the 2nd highest number
+13. Sort and print the first three smallest numbers
 14. Repeating and non-repeating character in string.
 15. Find the highest-paid employee in each department.
 16. Partition a list of numbers into even and odd.
@@ -28,7 +28,7 @@ Java 8 Programs:
 26. Square each number and remove duplicates.
 27. Sort a list of strings alphabetically.
 28. Find the first repeated character in a string.
-29. Find the second lowest number in a list.
+29. Find the second-lowest number in a list.
 30. Check if a string is a palindrome.
 31. Count vowels and consonants in a string.
 32. Find common elements between two lists.
@@ -38,7 +38,7 @@ Java 8 Programs:
 36. Find the highest-paid employee in each department.
 37. Find the average salary of employees.
 38. Partition employees by gender.
-39. Get names of all employees in a department.
+39. Get the names of all employees in a department.
 40. Find the youngest employee in a department.
 41. Find the oldest employee in a department.
 42. Use Collectors.joining() to concatenate strings.
