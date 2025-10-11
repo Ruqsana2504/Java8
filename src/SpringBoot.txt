@@ -1,0 +1,121 @@
+1) What is @SpringBootApplication?
+Ans) The @SpringBootApplication annotation in Java is a convenient shortcut for setting up a Spring Boot application. Here's a simple explanation:
+🔹 What is @SpringBootApplication?
+It is a combination of three annotations:
+@Configuration       // Marks the class as a source of bean definitions
+@EnableAutoConfiguration // Tells Spring Boot to auto-configure the application based on dependencies
+@ComponentScan       // Scans the package for components, configurations, and services
+
+So, when you use @SpringBootApplication, you're telling Spring Boot:
+"This is the main class. Set up everything automatically and scan for components in this package and sub-packages."
+
+🔹 In Short
+✅ Simplifies setup
+✅ Enables auto-configuration
+✅ Scans for components
+✅ Starts the application
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2) Difference between @Bean and @Autowired?
+Ans) @Bean
+-> Used to manually define a bean in a configuration class.
+-> You write a method that returns an object, and Spring registers it as a bean.
+
+@Configuration
+public class AppConfig {
+    @Bean
+    public MyService myService() {
+        return new MyServiceImpl();
+    }
+}
+📌 Think of @Bean as creating a bean.
+
+🔹 @Autowired
+-> Used to inject a bean that Spring has already created.
+-> Spring automatically finds the bean and injects it into your class.
+
+@Service
+public class MyController {
+    @Autowired
+    private MyService myService;
+}
+
+📌 Think of @Autowired as using a bean.
+
+🔁 Summary
+Annotation  Purpose    Used In
+@Bean    Create a bean  Configuration class
+@Autowired  Inject a bean  Any Spring-managed class
+
+
+3) Difference between @Qualifier and @Primary?
+Ans) @Primary
+-> Used to mark one bean as the default when multiple beans of the same type exist.
+
+@Bean
+@Primary
+public MyService myService1() {
+    return new MyServiceImpl1();
+}
+
+📌 Think of @Primary as saying:
+“Use this bean by default.”
+
+🔹 @Qualifier
+-> Used to specify exactly which bean to inject when multiple beans of the same type exist.
+-> Overrides the default behavior (even if @Primary is present).
+
+@Bean
+public MyService myService2() {
+    return new MyServiceImpl2();
+}
+
+@Autowired
+@Qualifier("myService2")
+private MyService myService;
+
+📌 Think of @Qualifier as saying:
+“Use this specific bean.”
+
+🔁 Summary
+Annotation  Purpose      Use Case
+@Primary  Default bean selection  When you want one bean to be preferred
+@Qualifier  Specific bean selection  When you want to choose a bean explicitly
+
+Priority:
+If both @Primary and @Qualifier are used:
+Spring will always use the bean specified by @Qualifier, even if another bean is marked as @Primary.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4) Difference between @Controller and @RestController?
+Ans) Difference between @Controller and @RestController:
+-> @Controller is used in Spring MVC to handle web requests and return views (like HTML pages).
+-> @RestController is a combination of @Controller and @ResponseBody, used to return JSON/XML data directly—ideal for REST APIs.
+
+"@Controller is for traditional web applications where we return views. @RestController is used in RESTful services to return data directly, usually in JSON format."
+
+How to change JSON return type to XML in a @RestController:
+By default, Spring Boot returns JSON. To return XML, include Jackson XML dependency and use produces = MediaType.APPLICATION_XML_VALUE in the @RequestMapping or @GetMapping.
+
+Add dependency:
+<dependency>
+  <groupId>com.fasterxml.jackson.dataformat</groupId>
+  <artifactId>jackson-dataformat-xml</artifactId>
+</dependency>
+
+Annotate the method:
+@GetMapping(value = "/user", produces = MediaType.APPLICATION_XML_VALUE)
+public User getUser() {
+    return new User("John", "Doe");
+}
+
+//for XML
+@XmlRootElement
+public class User {
+    private String firstName;
+    private String lastName
+//getter and setters , constructors
+}
+ 

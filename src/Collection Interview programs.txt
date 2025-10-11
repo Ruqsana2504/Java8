@@ -1,0 +1,329 @@
+Guess the output Collection interview programs
+
+Example1:
+------------
+
+import java.util.*;
+
+public class Test {
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>();
+        list.add("A");
+        list.add("B");
+        list.add(1, "C");
+        System.out.println(list);
+    }
+}
+
+Output: [A, C, B]
+
+
+Example2:
+----------
+import java.util.*;
+
+public class Test {
+    public static void main(String[] args) {
+        Set<Integer> set = new HashSet<>();
+        set.add(10);
+        set.add(20);
+        set.add(10);
+        System.out.println(set.size());
+    }
+}
+
+
+Output: set does not allow duplicates.(size = 2)
+
+Example3:
+----------
+
+import java.util.*;
+
+public class Test {
+ public static void main(String[] args) {
+ Set<String> set = new TreeSet<>();
+ set.add("banana");
+ set.add("apple");
+ set.add("cherry");
+ System.out.println(set);
+ }
+}
+
+
+Output: [apple, banana, cherry]
+
+Example4:
+----------
+
+import java.util.*;
+
+public class Test {
+ public static void main(String[] args) {
+ Map<String, Integer> map = new HashMap<>();
+ map.put("A", 1);
+ map.put("B", 2);
+ map.put("A", 3);
+ System.out.println(map.get("A"));
+ }
+}
+
+
+Output: 3 (The second put("A", 3) overwrites the previous value)
+
+Example5:
+---------
+
+import java.util.*;
+
+public class Test {
+ public static void main(String[] args) {
+ List<Integer> list = new ArrayList<>();
+ list.add(1);
+ list.add(2);
+ list.remove(Integer.valueOf(1));
+ System.out.println(list);
+ }
+}
+
+
+Output: [2] (remove(Integer.valueOf(1)) removes the object 1, not the element at index 1)
+
+
+Example6:
+----------
+import java.util.*;
+
+public class Test {
+    public static void main(String[] args) {
+        Set<String> set = new LinkedHashSet<>();
+        set.add("Zebra");
+        set.add("Apple");
+        set.add("Monkey");
+        System.out.println(set);
+    }
+}
+
+
+Output: [Zebra, Apple, Monkey] (LinkedHashSet maintains insertion order.)
+
+Example7:
+----------
+import java.util.*;
+
+public class Test {
+    public static void main(String[] args) {
+        Map<String, String> map = new HashMap<>();
+        map.put(null, "first");
+        map.put(null, "second");
+        System.out.println(map.get(null));
+    }
+}
+
+
+Output: second (HashMap allows one null key. The second put overwrites the first)
+
+Example8:
+----------
+import java.util.*;
+
+public class Test {
+    public static void main(String[] args) {
+        Map<String, Integer> map = new TreeMap<>(Collections.reverseOrder());
+        map.put("A", 1);
+        map.put("C", 3);
+        map.put("B", 2);
+        System.out.println(map);
+    }
+}
+
+
+Output: {C=3, B=2, A=1} (TreeMap sorts keys using the provided comparator — here, reverse order)
+
+Example9:
+-----------
+import java.util.*;
+
+public class Test {
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>(Arrays.asList("A", "B", "C"));
+        for (String s : list) {
+            if (s.equals("B")) {
+                list.remove(s);
+            }
+        }
+        System.out.println(list);
+    }
+}
+
+
+Output: [A,C]
+
+Example10:
+-----------
+import java.util.*;
+
+public class Test {
+    public static void main(String[] args) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.add(30);
+        pq.add(10);
+        pq.add(20);
+        System.out.println(pq.poll());
+    }
+}
+
+
+Output: 10 (PriorityQueue returns the smallest element by default (natural ordering))
+
+Example11:
+------------
+import java.util.*;
+
+public class Quiz {
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>();
+        list.add("One");
+        list.add("Two");
+        list.add("Three");
+
+        for (int i = 0; i < list.size(); i++) {
+            list.remove(i);
+        }
+
+        System.out.println(list);
+    }
+}
+
+Output: [Two]
+
+🧠 Explanation:
+The loop removes elements by index, not using an iterator.
+
+Here's what happens step-by-step:
+1) i = 0: removes "One" → list becomes ["Two", "Three"]
+2) i = 1: now points to "Three" (because "Two" is at index 0) → removes "Three"
+3) Loop ends (i = 2, list.size() = 1)
+4) Final list: ["Two"]
+
+Example12:
+-----------
+import java.util.*;
+
+public class Quiz {
+    public static void main(String[] args) {
+        List<String> list = Arrays.asList("A", "B", "C");
+        list.set(1, "D");
+        list.add("E");
+        System.out.println(list);
+    }
+}
+
+Output: Exception in thread "main" java.lang.UnsupportedOperationException
+
+🧠 Explanation:
+1) Arrays.asList() returns a fixed-size list backed by the original array.
+2) You can modify elements using set(), so list.set(1, "D") works fine.
+3) But list.add("E") tries to change the size of the list — and that’s not allowed.
+4) Hence, it throws an UnsupportedOperationException.
+
+
+Example13:
+------------
+import java.util.*;
+
+class Person {
+    String name;
+
+    Person(String name) {
+        this.name = name;
+    }
+}
+
+public class Quiz {
+    public static void main(String[] args) {
+        Set<Person> set = new HashSet<>();
+        set.add(new Person("Alice"));
+        set.add(new Person("Alice"));
+        System.out.println(set.size());
+    }
+}
+
+What do you think the output will be?
+1?
+2?
+Or will it throw an exception?
+
+✅ Correct Answer: 2
+
+Even though both Person objects have the same name ("Alice"), they are different objects in memory, and the Person class does not override equals() and hashCode().
+
+
+Example14:
+------------
+import java.util.*;
+
+public class Quiz {
+    public static void main(String[] args) {
+        List<String> list = List.of("X", "Y", "Z");
+        list.set(1, "W");
+        System.out.println(list);
+    }
+}
+
+What do you think the output will be?
+Will it print [X, W, Z]?
+Will it throw an exception?
+Or something else?
+
+Exception in thread "main" java.lang.UnsupportedOperationException
+
+Explanation:
+The method List.of(...) introduced in Java 9 returns an immutable list — meaning:
+
+-> You can’t add, remove, or modify elements.
+-> Any attempt to do so (like list.set(1, "W")) will throw an UnsupportedOperationException.
+-> So even though set() is a valid method on many List implementations, it’s not allowed on the list returned by List.of().
+
+
+
+Example15:
+------------
+import java.util.*;
+
+class Animal {
+    public String sound() {
+        return "Some sound";
+    }
+}
+
+class Dog extends Animal {
+    public String sound() {
+        return "Bark";
+    }
+}
+
+public class Quiz {
+    public static void main(String[] args) {
+        List<Animal> animals = new ArrayList<>();
+        animals.add(new Dog());
+        animals.add(new Animal());
+
+        for (Animal a : animals) {
+            System.out.print(a.sound() + " ");
+        }
+    }
+}
+
+
+What do you think the output will be?
+Bark Some sound
+Some sound Bark
+Some sound Some sound
+Or something else?
+
+Output: Bark Some sound
+
+🧠 Explanation:
+animals.add(new Dog()): Even though the list is of type Animal, the actual object is a Dog. So, polymorphism kicks in, and Dog's sound() method is called → "Bark".
+animals.add(new Animal()): This is a plain Animal, so it calls Animal's sound() → "Some sound".
