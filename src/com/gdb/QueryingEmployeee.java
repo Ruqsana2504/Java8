@@ -245,6 +245,44 @@ public class QueryingEmployeee {
         System.out.println(employeeWithSecondHighestSalary);
         System.out.println();
 
+        //28. Get a list of employee names who earn above the average salary
+        System.out.println("-------28. list of employee names who earn above the average salary--------");
+        double averageSalary = employees.stream().mapToDouble(Employeee::getSalary).average().orElse(0.0);
+        System.out.println("Average Salary : " + averageSalary);
+        List<Employeee> employeeEarnAboveAverageSalary = employees.stream()
+                .filter(emp -> emp.getSalary() > averageSalary)
+                .toList();
+        employeeEarnAboveAverageSalary.forEach(emp -> System.out.println(emp.getName() + " : " + emp.getSalary()));
+        System.out.println();
+
+        //29. Create a map with employee ID as key and name as value
+        System.out.println("-------29. Map with employee ID as key and name as value--------");
+        Map<Integer, String> mapEmployee = employees.stream()
+                //Merge function if you have same keys and want to keep latest values for that key
+                .collect(Collectors.toMap(Employeee::getId, Employeee::getName, (existingValue, newValue) -> newValue));
+//                .collect(Collectors.toMap(Employeee::getId, Function.identity(), (existingEmp, newEmp) -> newEmp));  // existingEmp and newEmp are Employeee instances))
+        System.out.println(mapEmployee);
+        System.out.println();
+
+        //30. Get the Average salary by department - LTIMindtree
+        System.out.println("-------30. Average salary by department--------");
+        Map<String, Double> averageSalaryByDept = employees.stream()
+                .collect(Collectors.groupingBy(Employeee::getDepartment, Collectors.averagingDouble(Employeee::getSalary)));
+        System.out.println(averageSalaryByDept);
+        System.out.println();
+
+        //31. Top 3 highest salaries in each department - TCS
+        System.out.println("-------31. Top 3 highest salaries in each department--------");
+        Map<String, List<Employeee>> top3ByDept = employees.stream()
+                .collect(Collectors.groupingBy(
+                        Employeee::getDepartment,
+                        Collectors.collectingAndThen(
+                                Collectors.toList(),
+                                list -> list.stream().sorted(Comparator.comparingDouble(Employeee::getSalary).reversed()).limit(3).toList()
+                        )));
+        System.out.println(top3ByDept);
+        System.out.println();
+
     }
 
 }

@@ -6,9 +6,21 @@ import java.util.stream.Collectors;
 
 public class QueryingStrings {
 
-    public static void main(String[] args) {
+    static void main() {
 
         String input = "Java articles are Awesome and4 educational";
+
+        List<String> sentences = Arrays.asList(
+                "Java streams are powerful",
+                "Streams help process collections",
+                "Java supports functional programming",
+                "Functional programming makes code concise",
+                "Streams can filter map and reduce data",
+                "Java is platform independent",
+                "Code once run anywhere",
+                "Collections and streams work well together",
+                "Java developers love streams",
+                "Practice makes you better at Java");
 
         //1.Remove duplicates
         List<String> removedDuplicates = Arrays.stream(input.split(" ")).distinct().toList();
@@ -122,6 +134,26 @@ public class QueryingStrings {
                 .filter(character -> !character.equals(' '))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         System.out.println("18.Frequency of characters : " + frequencyOfCharacters);
+        System.out.println();
 
+        //19. Word Frequency in a sentence
+        Map<String, Long> wordFrequency = sentences.stream()
+                .flatMap(sentence -> Arrays.stream(sentence.split(" ")))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println("19.Word Frequency in a sentence : " + wordFrequency);
+        System.out.println();
+
+        //20. Most Common Word in a sentence
+        System.out.print("20.Most Common Word in a sentence : ");
+        sentences.stream()
+                .flatMap(sentence -> Arrays.stream(sentence.split(" ")))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream()
+//                .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
+//                .findFirst()
+//                .ifPresent(entry -> System.out.println(entry.getKey()));
+                .max(Map.Entry.comparingByValue())
+                .ifPresent(entry -> System.out.println(entry.getKey()));
+        System.out.println();
     }
 }

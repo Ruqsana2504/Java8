@@ -1,6 +1,8 @@
 package src.com;
 
 import src.com.gdb.Employeee;
+import src.com.gdb.Item;
+import src.com.gdb.Transaction;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -12,7 +14,7 @@ import java.util.stream.Stream;
 
 public class Java8Problems {
 
-    public static void main(String[] args) {
+    static void main() {
         List<Employeee> employees = Employeee.getEmployees();
         String input = "Java is is awesome and and interesting";
         HashSet<Character> charHashSet = new HashSet<>();
@@ -25,7 +27,7 @@ public class Java8Problems {
         scores.put("Bob", 92);
         scores.put("Charlie", 78);
 
-// 		1. Find the First Non-Repeated Character in a String
+        // 1. Find the First Non-Repeated Character in a String
         char firstNonRepeatedChar = input.chars()
                 .mapToObj(ch -> (char) ch)
                 .filter(charHashSet::add)
@@ -34,7 +36,7 @@ public class Java8Problems {
         System.out.println("1. First Non-Repeated Character in a String : " + firstNonRepeatedChar);
         System.out.println();
 
-// 		2. Find Duplicate Elements in a List
+        // 2. Find Duplicate Elements in a List
 
         System.out.print("2. Duplicate Elements in a List : ");
         Arrays.stream(input.split(" "))
@@ -44,7 +46,7 @@ public class Java8Problems {
         System.out.println();
         System.out.println();
 
-// 		3. Sort a List of Employees by Salary and Name
+        // 3. Sort a List of Employees by Salary and Name
 
         System.out.println("3. Sort a List of Employees by Salary and Name ");
         List<Employeee> sortedEmployeeSal = employees.stream()
@@ -63,7 +65,7 @@ public class Java8Problems {
         sortedEmployeeSalAndName.forEach(emp -> System.out.println(emp.getName() + " " + emp.getSalary()));
         System.out.println();
 
-// 		4. Count Occurrences of Each Word in a Sentence
+        // 4. Count Occurrences of Each Word in a Sentence
 
         Map<String, Long> countOfWords = Arrays.stream(input.split(" "))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
@@ -71,14 +73,14 @@ public class Java8Problems {
         System.out.println("4. Count Occurrences of Each Word in a Sentence : " + countOfWords);
         System.out.println();
 
-// 		5. Find the Second-Highest Number in an Array
+        // 5. Find the Second-Highest Number in an Array
 
         Arrays.sort(nums);
 
         System.out.println("5. Second Highest Number in an Array : " + nums[nums.length - 2]);
         System.out.println();
 
-// 		6. Check if Two Strings are Anagrams (a word or phrase that is made by arranging the letters of another word or phrase in a different order)
+        // 6. Check if Two Strings are Anagrams (a word or phrase that is made by arranging the letters of another word or phrase in a different order)
 
         String str1 = "Fried";
         String str2 = "Fired";
@@ -93,7 +95,7 @@ public class Java8Problems {
         System.out.println("6. Two Strings are Anagrams : " + isAnagram);
         System.out.println();
 
-// 		7. Reverse Each Word in a Sentence
+        // 7. Reverse Each Word in a Sentence
 
         String reversedString = Arrays.stream(input.split(" "))
                 .map(str -> new StringBuilder(str).reverse()).collect(Collectors.joining(" "));
@@ -101,14 +103,14 @@ public class Java8Problems {
         System.out.println("7. Reverse Each Word in a Sentence : " + reversedString);
         System.out.println();
 
-// 		8. Find the Longest String in a List
+        // 8. Find the Longest String in a List
 
         String longestString = Arrays.stream(input.split(" ")).max(Comparator.comparingInt(String::length)).get();
 
         System.out.println("8. Longest String in a List : " + longestString);
         System.out.println();
 
-// 		10. Flatten a List of Lists
+        // 10. Flatten a List of Lists
 
         List<List<String>> nestedList = List.of(List.of("Ruqsana", "Daniya"));
 
@@ -117,7 +119,7 @@ public class Java8Problems {
         System.out.println("10. Flatten a List of Lists : " + nestedList + " Final List : " + finalList);
         System.out.println();
 
-// 		11. Occurrence of each no in list of integers
+        // 11. Occurrence of each no in list of integers
 // 		Map<Integer, Long> occOfNum = numList.stream()
         //.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
@@ -127,7 +129,7 @@ public class Java8Problems {
         System.out.println("11. Occurrence of each no in list of integers : " + occOfNum);
         System.out.println();
 
-// 		12. Sort the array of numbers in descending order and find the 2nd highest number
+        // 12. Sort the array of numbers in descending order and find the 2nd highest number
 
 // 		List<Integer> sortedList = Arrays.stream(nums).boxed().sorted((num1, num2)->num1-num2).toList();
 
@@ -146,7 +148,7 @@ public class Java8Problems {
         System.out.println("12.4. Sort the array of numbers in descending order and find 2nd highest number : " + descSortedListSecondHighestDistinct);
         System.out.println();
 
-// 		13. Sort and print first the smallest numbers
+        // 13. Sort and print first the smallest numbers
 
         List<Integer> ascSortedListFirstThreeNum = Arrays.stream(nums).boxed()
                 .sorted().limit(3).toList();
@@ -154,7 +156,7 @@ public class Java8Problems {
         System.out.println("13. Sort and print first three smallest numbers : " + ascSortedListFirstThreeNum);
         System.out.println();
 
-// 		14. Repeating character in string.
+        // 14. Repeating character in string.
 
         charHashSet.clear();
         System.out.println("14. Repeating character in string : ");
@@ -177,7 +179,7 @@ public class Java8Problems {
         System.out.println();
         System.out.println();
 
-// 		15. Find the highest-paid Employee in each department.
+        // 15. Find the highest-paid Employee in each department.
 
         Map<String, Employeee> highestPaidEmplDeptWise = employees.stream()
                 .collect(Collectors.groupingBy(
@@ -191,7 +193,7 @@ public class Java8Problems {
         System.out.println("15. Find the highest-paid employee in each department " + highestPaidEmplDeptWise);
         System.out.println();
 
-// 		16. Partition a list of numbers into even and odd.
+        // 16. Partition a list of numbers into even and odd.
 
         Map<Boolean, List<Integer>> partitioned = Arrays.stream(nums).boxed().distinct()
                 .collect(Collectors.partitioningBy(num -> num % 2 == 0));
@@ -202,20 +204,20 @@ public class Java8Problems {
         System.out.println("16. Partition a list of numbers into even and odd : " + evenNumbers + " " + oddNumbers);
         System.out.println();
 
-// 		17. Convert a list to a map using streams.
+        // 17. Convert a list to a map using streams.
 
         Map<String, Integer> listToMap = finalList.stream().collect(Collectors.toMap(Function.identity(), String::length));
 
         System.out.println("17. Convert a list to a map using streams : " + listToMap);
         System.out.println();
 
-// 		18. Remove duplicates from a list using streams.
+        // 18. Remove duplicates from a list using streams.
 
         List<Integer> distinctList = Arrays.stream(nums).boxed().distinct().toList();
         System.out.println("18. Remove duplicates from a list using streams : " + distinctList);
         System.out.println();
 
-// 		19. Convert a list of strings to uppercase.
+        // 19. Convert a list of strings to uppercase.
 
         List<String> strList = Arrays.asList("Ruqsana", "Daniya");
         List<String> finalStrList = strList.stream().map(String::toUpperCase).toList();
@@ -223,7 +225,7 @@ public class Java8Problems {
         System.out.println("19. Convert a list of strings to uppercase : " + finalStrList);
         System.out.println();
 
-// 		20. Count empty strings in a list.
+        // 20. Count empty strings in a list.
 
         AtomicInteger count = new AtomicInteger(0);
         strArrayList
@@ -237,28 +239,28 @@ public class Java8Problems {
         System.out.println("20. Count empty strings in a list : " + count.get() + "By Simple filter : " + emptyStringCount);
         System.out.println();
 
-// 		21. Remove empty strings from a list.
+        // 21. Remove empty strings from a list.
 
         List<String> nonEmptyList = strArrayList.stream().filter(str -> !str.isBlank()).toList();
 
         System.out.println("21. Remove empty strings from a list : " + nonEmptyList);
         System.out.println();
 
-// 		22. Find the maximum number in a list.
+        // 22. Find the maximum number in a list.
 
         Integer maxNum = Arrays.stream(nums).boxed().max(Integer::compare).get();
 
         System.out.println("22. Maximum number in a list : " + maxNum);
         System.out.println();
 
-// 		23. Find the minimum number in a list.
+        // 23. Find the minimum number in a list.
 
         Integer minNum = Arrays.stream(nums).boxed().min(Integer::compare).get();
 
         System.out.println("23. Minimum number in a list : " + minNum);
         System.out.println();
 
-// 		24. Calculate the sum of all numbers.
+        // 24. Calculate the sum of all numbers.
 
         int sumNum = Arrays.stream(nums).sum();
         int sumNumWrapper = numList.stream().mapToInt(i -> i).sum();
@@ -266,21 +268,21 @@ public class Java8Problems {
         System.out.println("24. Sum of all numbers : " + sumNum + " Using wrapper classes : " + sumNumWrapper);
         System.out.println();
 
-// 		25. Calculate the average of numbers.
+        // 25. Calculate the average of numbers.
 
         double avgNum = Arrays.stream(nums).mapToDouble(num -> num).average().orElse(0.0);
 
         System.out.println("25. Average of numbers : " + avgNum);
         System.out.println();
 
-// 		26. Square each number and remove duplicates.
+        // 26. Square each number and remove duplicates.
 
         List<Integer> numSquare = Arrays.stream(nums).boxed().distinct().map(num -> num * num).toList();
 
         System.out.println("26. Square each number and remove duplicates : " + numSquare);
         System.out.println();
 
-// 		27. Sort a list of strings alphabetically.
+        // 27. Sort a list of strings alphabetically.
 
         List<String> sortedStrList = strArrayList.stream().filter(s -> !s.isBlank()).sorted().toList();
 
@@ -288,14 +290,14 @@ public class Java8Problems {
         System.out.println();
 
 
-// 		29. Find the second-lowest number in a list.
+        // 29. Find the second-lowest number in a list.
 
         int secondLowestNum = Arrays.stream(nums).sorted().distinct().skip(1).findFirst().getAsInt();
 
         System.out.println("29. Second lowest number in a list : " + secondLowestNum);
         System.out.println();
 
-// 		30. Check if a string is a palindrome.
+        // 30. Check if a string is a palindrome.
 
         List<String> palindromeList = strArrayList.stream()
                 .filter(str -> !str.isBlank() && str.contentEquals(new StringBuilder(str).reverse()))
@@ -304,7 +306,7 @@ public class Java8Problems {
         System.out.println("30. string is a palindrome : " + palindromeList);
         System.out.println();
 
-// 		31. Count vowels and consonants in a string.
+        // 31. Count vowels and consonants in a string.
 
         String inp = "Ruqsana";
 
@@ -314,7 +316,7 @@ public class Java8Problems {
         System.out.println("31. vowels and consonants in a string : " + vowelCount + ", " + consonantCount);
         System.out.println();
 
-// 		32. Find common elements between two lists.
+        // 32. Find common elements between two lists.
 
         List<String> list2 = Arrays.asList("KhuratUlAin", "Saheba");
 
@@ -323,7 +325,7 @@ public class Java8Problems {
         System.out.println("32. common elements between two lists : " + commonElementsInList);
         System.out.println();
 
-// 		33. Merge two lists and remove duplicates.
+        // 33. Merge two lists and remove duplicates.
 
         List<String> mergedList = Stream.concat(strArrayList.stream(), list2.stream())
                 .filter(str -> !str.isBlank()).distinct().toList();
@@ -331,7 +333,7 @@ public class Java8Problems {
         System.out.println("33. Merge two lists and remove duplicates : " + mergedList);
         System.out.println();
 
-// 		35. Group employees by department and count employees in each department.
+        // 35. Group employees by department and count employees in each department.
 
         Map<String, Long> empCountDeptWise = employees.stream()
                 .collect(Collectors.groupingBy(Employeee::getDepartment, Collectors.counting()));
@@ -339,14 +341,14 @@ public class Java8Problems {
         System.out.println("35. Group employees by department and count employees in each department : " + empCountDeptWise);
         System.out.println();
 
-// 		37. Find the average salary of employees.
+        // 37. Find the average salary of employees.
 
         double avgSalary = employees.stream().mapToDouble(Employeee::getSalary).average().orElse(0.0);
 
         System.out.println("37. Average salary of employees : " + avgSalary);
         System.out.println();
 
-// 		38. Partition employees by gender.
+        // 38. Partition employees by gender.
 
         Map<Boolean, List<Employeee>> partitionedMap = employees.stream()
                 .collect(Collectors.partitioningBy(emp -> emp.getGender().equals("Male")));
@@ -358,7 +360,7 @@ public class Java8Problems {
         System.out.println("38.2. Partition employees by gender - Female: " + femaleEmp);
         System.out.println();
 
-// 		39. Get the names of all employees in a department.
+        // 39. Get the names of all employees in a department.
 
         Map<String, List<Employeee>> empDeptWise = employees.stream()
                 .collect(Collectors.groupingBy(Employeee::getDepartment));
@@ -367,7 +369,7 @@ public class Java8Problems {
         empDeptWise.forEach((dept, empList) -> System.out.println(dept + ": " + empList));
         System.out.println();
 
-// 		40. Find the youngest employee in a department.
+        // 40. Find the youngest employee in a department.
 
         Map<String, Employeee> youngestEmp = employees.stream()
                 .collect(Collectors.groupingBy(
@@ -395,19 +397,19 @@ public class Java8Problems {
         System.out.println("41. Find the oldest employee in a department : " + oldestEmp);
         System.out.println();
 
-// 42. Use Collectors.joining() to concatenate strings.
+        // 42. Use Collectors.joining() to concatenate strings.
         String concatenatedString = strArrayList.stream().filter(Predicate.not(String::isBlank)).collect(Collectors.joining(", "));
 
         System.out.println("42. Use Collectors.joining() to concatenate strings : " + concatenatedString);
         System.out.println();
 
-// 44. Use reduce() to calculate factorial.
+        // 44. Use reduce() to calculate factorial.
         int num = 5;
         int factorial = IntStream.rangeClosed(1, num).reduce(1, (a, b) -> a * b);
         System.out.println("44. Use reduce() to calculate factorial : " + factorial);
         System.out.println();
 
-// 45. Use peek() for debugging stream operations.
+        // 45. Use peek() for debugging stream operations.
         System.out.println("45. Use peek() for debugging stream operations :");
         long peekDemo = strArrayList.stream()
                 .peek(name -> System.out.println("Original : " + name))
@@ -418,7 +420,7 @@ public class Java8Problems {
         System.out.println("count : " + peekDemo);
         System.out.println();
 
-// 46. Use anyMatch(), allMatch(), noneMatch() examples.
+        // 46. Use anyMatch(), allMatch(), noneMatch() examples.
         boolean anyMatchString = strArrayList.stream()
                 .anyMatch(name -> name.length() == 6);
 
@@ -433,7 +435,7 @@ public class Java8Problems {
         System.out.println("46. Use anyMatch(), allMatch(), noneMatch() examples : " + anyMatchString + " " + allMatchString + " " + noneMatchString);
         System.out.println();
 
-// 48. Find the Most Frequent Element in a List
+        // 48. Find the Most Frequent Element in a List
         int mostFrequentNum = numList.stream()
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet().stream()
@@ -443,11 +445,23 @@ public class Java8Problems {
         System.out.println("48. Find the Most Frequent Element in a List : " + mostFrequentNum);
         System.out.println();
 
-// 50. Sort Map by Value in Descending Order
+        // 50. Sort Map by Value in Descending Order
         System.out.println("50. Sort Map by Value in Descending Order : ");
         scores.entrySet().stream()
                 .sorted((e1, e2) -> e2.getValue() - e1.getValue())
                 .forEach(System.out::println);
         System.out.println();
+
+        //51. Given a list of transactions (each with a list of items), count the items with an amount less than 50 (focus on using flatMap and count)
+        System.out.println("Given a list of transactions (each with a list of items), count the items with an amount less than 50 : ");
+        Transaction transaction1 = new Transaction(List.of(new Item("item1", 100.0), new Item("item2", 40.0)));
+        Transaction transaction2 = new Transaction(List.of(new Item("item3", 200.0), new Item("item4", 10.0), new Item("item5", 30.0)));
+        List<Transaction> transactions = List.of(transaction1, transaction2);
+
+        Long countOfItemsAmountLessThan50 = transactions.stream()
+                .flatMap(transaction -> transaction.getItems().stream())
+                .filter(item -> item.getAmount() < 50)
+                .count();
+        System.out.println(countOfItemsAmountLessThan50);
     }
 }
