@@ -19,4 +19,12 @@ public class SQLProblems {
     INNER JOIN ORDERS
     ON CUSTOMER.CUSTOMERID = ORDERS.CUSTOMERID
     WHERE ORDERS.CUSTOMERID IS NULL;
+
+    --3. Delete duplicate rows - TCS
+    DELETE e1
+    FROM EMPLOYEE e1
+    JOIN EMPLOYEE e2
+    ON e1.NAME = e2.NAME
+    AND e1.DEPT = e2.DEPT
+    AND e1.ID > e2.ID;
 }
