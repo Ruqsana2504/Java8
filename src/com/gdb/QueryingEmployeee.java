@@ -12,7 +12,7 @@ import static src.com.gdb.Employeee.getEmployees;
 
 public class QueryingEmployeee {
 
-    public static void main(String[] args) {
+    static void main() {
 
         List<Employeee> employees = getEmployees();
 
