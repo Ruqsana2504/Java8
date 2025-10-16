@@ -155,5 +155,13 @@ public class QueryingStrings {
                 .max(Map.Entry.comparingByValue())
                 .ifPresent(entry -> System.out.println(entry.getKey()));
         System.out.println();
+
+        //21. Length of Second-Longest word in a sentence - EPAM
+        Optional<String> secondLongestWordLength = Arrays.stream(input.split(" "))
+                .sorted(Comparator.comparingInt(String::length).reversed())
+                .skip(1)
+                .findFirst();
+        System.out.println("21.Length of Second-Longest word in a sentence : " + secondLongestWordLength.get().length());
+        System.out.println();
     }
 }
