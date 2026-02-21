@@ -39,7 +39,8 @@ CORBA support
 Impact: Encourages use of external libraries and modular design.
 
 6. Launch Single-File Source-Code Programs
-Purpose: Run Java programs without compiling. -Example**:
+Purpose: Run Java programs without compiling.
+-Example**:
 java HelloWorld.java
 
 Impact: Simplifies scripting and quick testing.
